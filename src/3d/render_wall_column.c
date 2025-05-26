@@ -13,7 +13,7 @@ void render_wall_column(sfRenderWindow *window, int column,
     sfVector2u window_size = sfRenderWindow_getSize(window);
     float top = (window_size.y / 2.0) - (wall_height / 2);
     float bottom = top + wall_height;
-    float shaders = fmin(1.0f, wall_height / 500.0f);
+    float shaders = fmin(1.0f, wall_height / 2000.0f);
     sfRectangleShape *wall = sfRectangleShape_create();
 
     if (top < 0)

@@ -6,26 +6,43 @@
 */
 
 #include "utils.h"
+#include "struct.h"
+
+void adjust_map(MapParameters_t *params)
+{
+    sfVector2f tile_pos;
+
+    for (int y = 0; y < MAP_HEIGHT; y++) {
+        for (int x = 0; x < MAP_WIDTH; x++) {
+            tile_pos.x = x * params->scaled_tile + params->offset.x;
+            tile_pos.y = y * params->scaled_tile + params->offset.y;
+            sfRectangleShape_setPosition(params->tile, tile_pos);
+            draw_tiles(y, x, params->tile);
+            sfRenderWindow_drawRectangleShape(params->window, params->tile,
+                NULL);
+        }
+    }
+}
 
 void draw_map(sfRenderWindow *window)
 {
+    MapParameters_t params;
     sfRectangleShape *tile = sfRectangleShape_create();
-    sfVector2f tile_pos;
     sfVector2u window_size = sfRenderWindow_getSize(window);
+    float map_ratio = 0.8f;
+    float scaled_width = (window_size.x * map_ratio) / MAP_WIDTH;
+    float scaled_height = (window_size.y * map_ratio) / MAP_HEIGHT;
+    float scaled_tile = fminf(scaled_width, scaled_height);
     sfVector2f offset = {
-        ((float)window_size.x / 2) - (MAP_WIDTH * TILE_SIZE) / 2.0f,
-        ((float)window_size.y / 2) - (MAP_HEIGHT * TILE_SIZE) / 2.0f
+        (window_size.x - (MAP_WIDTH * scaled_tile)) / 2.0f,
+        (window_size.y - (MAP_HEIGHT * scaled_tile)) / 2.0f
     };
 
-    sfRectangleShape_setSize(tile, (sfVector2f){TILE_SIZE, TILE_SIZE});
-    for (int height = 0; height < MAP_HEIGHT; height++) {
-        for (int width = 0; width < MAP_WIDTH; width++) {
-            tile_pos.x = width * TILE_SIZE + offset.x;
-            tile_pos.y = height * TILE_SIZE + offset.y;
-            sfRectangleShape_setPosition(tile, tile_pos);
-            draw_tiles(height, width, tile);
-            sfRenderWindow_drawRectangleShape(window, tile, NULL);
-        }
-    }
+    sfRectangleShape_setSize(tile, (sfVector2f){scaled_tile, scaled_tile});
+    params.window = window;
+    params.tile = tile;
+    params.offset = offset;
+    params.scaled_tile = scaled_tile;
+    adjust_map(&params);
     sfRectangleShape_destroy(tile);
 }

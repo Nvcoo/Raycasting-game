@@ -18,14 +18,17 @@ SRC =	./main.c \
 		./src/map/draw_map.c \
 		./src/map/minimap.c \
 		./src/map/draw_tiles.c \
+		./src/map/map_layer.c \
 		./src/player/init_player.c \
 		./src/player/draw_player.c \
 		./src/player/update_player.c \
 		./src/player/move_forwards.c \
 		./src/player/strafe.c \
-		./src/is_wall.c \
+		./src/rays/is_wall.c \
 		./src/3d/draw_background.c \
 		./src/3d/render_wall_column.c \
+		./src/3d/draw_ceiling.c \
+		./src/3d/draw_floor.c \
 		./src/rays/cast_single_ray.c \
 		./src/rays/cast_all_rays.c \
 		./src/rays/ray_utilities.c \
@@ -34,6 +37,12 @@ SRC =	./main.c \
 		./src/rays/coloring.c \
 		./src/rays/vertical_ray.c \
 		./src/rays/horizontal_ray.c \
+		./src/torch/torch.c \
+		./src/torch/torch_presets.c \
+		./src/weapon/weapon.c \
+		./src/weapon/weapon_presets.c \
+		./src/weapon/crosshair.c \
+		./src/weapon/ammo_text.c \
 
 OBJ = $(SRC:.c=.o)
 

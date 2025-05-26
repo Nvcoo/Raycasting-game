@@ -11,9 +11,9 @@
 void rotation(Player_t *player)
 {
     if (sfKeyboard_isKeyPressed(sfKeyQ))
-        player->angle -= 0.013;
+        player->angle -= 0.017;
     if (sfKeyboard_isKeyPressed(sfKeyE))
-        player->angle += 0.013;
+        player->angle += 0.017;
 }
 
 void update_player(Player_t *player)

@@ -10,7 +10,7 @@
 void draw_tiles(int height, int width, sfRectangleShape *tile)
 {
     if (map[height][width] == 1)
-        sfRectangleShape_setFillColor(tile, sfColor_fromRGB(217, 209, 165));
+        sfRectangleShape_setFillColor(tile, sfColor_fromRGB(60, 100, 140));
     if (map[height][width] == 0)
-        sfRectangleShape_setFillColor(tile, sfColor_fromRGB(36, 112, 45));
+        sfRectangleShape_setFillColor(tile, sfColor_fromRGB(155, 165, 180));
 }
