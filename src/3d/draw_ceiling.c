@@ -7,14 +7,6 @@
 
 #include "utils.h"
 
-void ceiling_coloring(sfColor *color, float shade)
-{
-        *color = sfColor_fromRGB(195, 230, 255);
-        color->r *= shade;
-        color->g *= shade;
-        color->b *= shade;
-}
-
 void draw_ceiling(sfRenderWindow* window, const int horizon, const float range)
 {
     sfVector2u window_size = sfRenderWindow_getSize(window);

@@ -8,14 +8,6 @@
 #include "struct.h"
 #include "utils.h"
 
-void rotation(Player_t *player)
-{
-    if (sfKeyboard_isKeyPressed(sfKeyQ))
-        player->angle -= 0.017;
-    if (sfKeyboard_isKeyPressed(sfKeyE))
-        player->angle += 0.017;
-}
-
 void update_player(Player_t *player)
 {
     float step = 0.8f;

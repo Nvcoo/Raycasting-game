@@ -14,14 +14,6 @@ void row_init(sfRectangleShape *row, int *width, int y, sfColor *color)
     sfRectangleShape_setFillColor(row, *color);
 }
 
-void floor_coloring(sfColor *color, float shade)
-{
-    *color = sfColor_fromRGB(155, 165, 180);
-    color->r *= shade;
-    color->g *= shade;
-    color->b *= shade;
-}
-
 void draw_floor(sfRenderWindow *window, const int horizon, const float range)
 {
     sfVector2u window_size = sfRenderWindow_getSize(window);
